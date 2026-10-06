@@ -1,11 +1,15 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammed Aaquil A - Portfolio</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
             --bg-main: #f8faf9;
@@ -43,7 +47,10 @@
             margin: 0 auto;
         }
 
-        /* Top Hero Section */
+        /* =========================
+           HERO SECTION
+        ========================== */
+
         .hero-card {
             background: var(--card-bg);
             border-radius: 24px;
@@ -89,6 +96,7 @@
             margin-top: 8px;
             font-size: 0.9rem;
             color: var(--text-secondary);
+            flex-wrap: wrap;
         }
 
         .location-contact span {
@@ -120,7 +128,10 @@
             background: #e2e8f0;
         }
 
-        /* Main Grid Layout */
+        /* =========================
+           MAIN GRID
+        ========================== */
+
         .main-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -157,11 +168,15 @@
             margin-bottom: 30px;
         }
 
-        /* Timeline Items (Education & Experience) */
+        /* =========================
+           EDUCATION / EXPERIENCE
+        ========================== */
+
         .timeline-item {
             display: flex;
             justify-content: space-between;
             margin-bottom: 20px;
+            gap: 20px;
         }
 
         .timeline-title {
@@ -186,6 +201,7 @@
             display: flex;
             gap: 12px;
             align-items: flex-start;
+            white-space: nowrap;
         }
 
         .pill-stat {
@@ -202,7 +218,10 @@
             color: var(--text-muted);
         }
 
-        /* Research Box */
+        /* =========================
+           RESEARCH CARD
+        ========================== */
+
         .research-card {
             background: #f0fdf4;
             border: 1px solid #dcfce7;
@@ -238,6 +257,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
 
         .res-text {
@@ -258,7 +278,10 @@
             color: var(--text-secondary);
         }
 
-        /* Certifications Container */
+        /* =========================
+           CERTIFICATIONS
+        ========================== */
+
         .certification-container {
             margin-top: 35px;
         }
@@ -272,6 +295,7 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.01);
+            gap: 20px;
         }
 
         .cert-info h4 {
@@ -286,7 +310,10 @@
             margin-top: 2px;
         }
 
-        /* Skills Sidebar */
+        /* =========================
+           SKILLS
+        ========================== */
+
         .skills-card {
             background: var(--card-bg);
             border-radius: 24px;
@@ -296,6 +323,10 @@
 
         .skill-group {
             margin-bottom: 20px;
+        }
+
+        .skill-group:last-child {
+            margin-bottom: 0;
         }
 
         .skill-group-title {
@@ -322,12 +353,23 @@
             font-weight: 600;
         }
 
-        /* Projects Section */
+        /* =========================
+           PROJECTS SECTION
+        ========================== */
+
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 20px;
             margin-top: 20px;
+            align-items: stretch;
+        }
+
+        .project-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            height: 100%;
         }
 
         .project-card {
@@ -338,6 +380,9 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            width: 100%;
+            min-height: 340px;
+            height: 100%;
             box-shadow: 0 4px 20px rgba(0,0,0,0.01);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
@@ -350,17 +395,21 @@
         .card-top {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            gap: 10px;
+            min-height: 36px;
             margin-bottom: 12px;
         }
 
         .project-title {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--text-primary);
+            line-height: 1.3;
         }
 
         .badge-status {
+            flex-shrink: 0;
             font-size: 0.65rem;
             font-weight: 800;
             padding: 3px 8px;
@@ -383,12 +432,13 @@
             color: var(--text-muted);
             margin-bottom: 12px;
             font-weight: 600;
+            min-height: 19px;
         }
 
         .project-desc {
             font-size: 0.85rem;
             color: var(--text-secondary);
-            line-height: 1.4;
+            line-height: 1.5;
             margin-bottom: 20px;
         }
 
@@ -408,377 +458,866 @@
             font-weight: 600;
         }
 
-        .project-link {
-            text-decoration: none;
-            color: inherit;
-        }
+        /* =========================
+           RESPONSIVE
+        ========================== */
 
-        /* Responsive Breakpoints */
         @media (max-width: 1024px) {
+
             .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero-card {
+                padding: 30px;
             }
         }
 
         @media (max-width: 768px) {
+
+            body {
+                padding: 20px 15px;
+            }
+
             .main-grid {
                 grid-template-columns: 1fr;
             }
+
             .hero-card {
                 flex-direction: column;
                 gap: 20px;
+                padding: 25px;
             }
+
+            .hero-left {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-info h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-right {
+                width: 100%;
+            }
+
+            .btn-link {
+                justify-content: center;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
             .research-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .timeline-meta {
+                white-space: normal;
+                flex-wrap: wrap;
+            }
+
+            .cert-card {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
 </head>
+
 <body>
 
 <div class="container">
 
-    <!-- Hero Card -->
+    <!-- =========================
+         HERO CARD
+    ========================== -->
+
     <div class="hero-card">
+
         <div class="hero-left">
-            <img src="photo.jpeg" alt="Mohammed Aaquil A" class="profile-img">
+
+            <img src="photo.jpeg"
+                 alt="Mohammed Aaquil A"
+                 class="profile-img">
+
             <div class="hero-info">
-                <h1>Mohammed Aaquil <span>A</span></h1>
+
+                <h1>
+                    Mohammed Aaquil <span>A</span>
+                </h1>
+
                 <div class="location-contact">
-                    <span><i class="fas fa-location-dot"></i> Vellore, India</span>
-                    <span><i class="fas fa-phone"></i> +91-9384485463</span>
-                    <span><i class="fas fa-envelope"></i> mohammedaaquil07@gmail.com</span>
+
+                    <span>
+                        <i class="fas fa-location-dot"></i>
+                        Vellore, India
+                    </span>
+
+                    <span>
+                        <i class="fas fa-phone"></i>
+                        +91-9384485463
+                    </span>
+
+                    <span>
+                        <i class="fas fa-envelope"></i>
+                        mohammedaaquil07@gmail.com
+                    </span>
+
                 </div>
+
             </div>
+
         </div>
+
         <div class="hero-right">
-            <a href="https://github.com/AAQUIL-16" class="btn-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            <a href="https://www.linkedin.com/in/mohammed-aaquil-a-a7503528b/" class="btn-link" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+
+            <a href="https://github.com/AAQUIL-16"
+               class="btn-link"
+               target="_blank">
+
+                <i class="fab fa-github"></i>
+                GitHub
+
+            </a>
+
+            <a href="https://www.linkedin.com/in/mohammed-aaquil-a-a7503528b/"
+               class="btn-link"
+               target="_blank">
+
+                <i class="fab fa-linkedin"></i>
+                LinkedIn
+
+            </a>
+
         </div>
+
     </div>
 
-    <!-- Main Content Grid -->
+
+    <!-- =========================
+         MAIN CONTENT GRID
+    ========================== -->
+
     <div class="main-grid">
-        
-        <!-- Left Column: About, Education, Experience, Distinction & Certifications -->
+
+        <!-- LEFT COLUMN -->
+
         <div class="left-column">
-            
-            <!-- About Section -->
-            <div class="section-header"><i class="fas fa-user"></i> ABOUT</div>
+
+            <!-- ABOUT -->
+
+            <div class="section-header">
+                <i class="fas fa-user"></i>
+                ABOUT
+            </div>
+
             <p class="about-text">
                 Software Engineering student at VIT Vellore with strong full-stack web and mobile application development experience, along with project exposure to IoT systems and database management. Passionate about building secure, scalable software solutions.
             </p>
-            <div class="highlight-badge">2 patents published/filed</div>
 
-            <!-- Education Section -->
-            <div class="section-header" style="margin-top: 30px;"><i class="fas fa-graduation-cap"></i> EDUCATION</div>
-            
-            <div class="timeline-item">
-                <div>
-                    <div class="timeline-title">M.Tech (Integrated) Software Engineering</div>
-                    <div class="timeline-sub">Vellore Institute of Technology, Vellore</div>
-                </div>
-                <div class="timeline-meta">
-                    <span class="pill-stat">GPA: 8.90/10</span>
-                    <span class="timeline-date">2023 – 2028</span>
-                </div>
+            <div class="highlight-badge">
+                2 patents published/filed
+            </div>
+
+
+            <!-- EDUCATION -->
+
+            <div class="section-header" style="margin-top: 30px;">
+                <i class="fas fa-graduation-cap"></i>
+                EDUCATION
             </div>
 
             <div class="timeline-item">
+
                 <div>
-                    <div class="timeline-title">Higher Secondary</div>
-                    <div class="timeline-sub">Cluny Matriculation Higher Secondary School, Vellore</div>
+
+                    <div class="timeline-title">
+                        M.Tech (Integrated) Software Engineering
+                    </div>
+
+                    <div class="timeline-sub">
+                        Vellore Institute of Technology, Vellore
+                    </div>
+
                 </div>
+
                 <div class="timeline-meta">
-                    <span class="pill-stat">82.33%</span>
-                    <span class="timeline-date">2021 – 2023</span>
+
+                    <span class="pill-stat">
+                        GPA: 8.90/10
+                    </span>
+
+                    <span class="timeline-date">
+                        2023 – 2028
+                    </span>
+
                 </div>
+
             </div>
 
-            <!-- Experience Section -->
-            <div class="section-header" style="margin-top: 35px;"><i class="fas fa-briefcase"></i> EXPERIENCE</div>
-            
+
             <div class="timeline-item">
+
                 <div>
-                    <div class="timeline-title">Role / Position Title</div>
-                    <div class="timeline-sub">Company / Organization Name</div>
+
+                    <div class="timeline-title">
+                        Higher Secondary
+                    </div>
+
+                    <div class="timeline-sub">
+                        Cluny Matriculation Higher Secondary School, Vellore
+                    </div>
+
+                </div>
+
+                <div class="timeline-meta">
+
+                    <span class="pill-stat">
+                        82.33%
+                    </span>
+
+                    <span class="timeline-date">
+                        2021 – 2023
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- EXPERIENCE -->
+
+            <div class="section-header" style="margin-top: 35px;">
+                <i class="fas fa-briefcase"></i>
+                EXPERIENCE
+            </div>
+
+            <div class="timeline-item">
+
+                <div>
+
+                    <div class="timeline-title">
+                        Role / Position Title
+                    </div>
+
+                    <div class="timeline-sub">
+                        Company / Organization Name
+                    </div>
+
                     <div class="timeline-desc">
                         Key responsibilities, achievements, and technology stack used during this role will be detailed here.
                     </div>
+
                 </div>
+
                 <div class="timeline-meta">
-                    <span class="timeline-date">Month Year – Present</span>
+
+                    <span class="timeline-date">
+                        Month Year – Present
+                    </span>
+
                 </div>
+
             </div>
 
-            <!-- Distinction & Research Section -->
+
+            <!-- DISTINCTION & RESEARCH -->
+
             <div class="research-card">
-                <div class="section-header"><i class="fas fa-trophy"></i> DISTINCTION & RESEARCH</div>
-                
-                <div class="research-grid">
-                    <div class="res-box">
-                        <div class="res-num">1</div>
-                        <div class="res-text">IEEE Research Paper Publication</div>
-                    </div>
-                    <div class="res-box">
-                        <div class="res-num">2</div>
-                        <div class="res-text">Patents Published</div>
-                    </div>
+
+                <div class="section-header">
+                    <i class="fas fa-trophy"></i>
+                    DISTINCTION & RESEARCH
                 </div>
+
+                <div class="research-grid">
+
+                    <div class="res-box">
+
+                        <div class="res-num">
+                            1
+                        </div>
+
+                        <div class="res-text">
+                            IEEE Research Paper Publication
+                        </div>
+
+                    </div>
+
+
+                    <div class="res-box">
+
+                        <div class="res-num">
+                            2
+                        </div>
+
+                        <div class="res-text">
+                            Patents Published
+                        </div>
+
+                    </div>
+
+                </div>
+
 
                 <div style="margin-top: 15px;">
-                    <div class="res-list-title"><i class="fas fa-award"></i> Patents & Publications</div>
-                    <div class="res-list-desc">
-                        • <strong>StudySpotVIT:</strong>An IoT-Enabled Intelligent Seat Allocation Framework Incorporating Persistent Disruptive Noise Detection(I5CPS 2026 Paper)<br>
-                        • <strong>Biometric Control System:</strong> Biometric Trust-Based Control System for Projection Devices (Patent Published)<br>
-                        • <strong>StudySpotVIT-Self_Learned:</strong> A Self-Learning IoT-based Edge System and Method for Adaptive Persistent Noise Detection and Seat Recommendation (Patent Published)
+
+                    <div class="res-list-title">
+                        <i class="fas fa-award"></i>
+                        Patents & Publications
                     </div>
+
+                    <div class="res-list-desc">
+
+                        • <strong>StudySpotVIT:</strong>
+                        An IoT-Enabled Intelligent Seat Allocation Framework Incorporating Persistent Disruptive Noise Detection (I5CPS 2026 Paper)
+
+                        <br>
+
+                        • <strong>Biometric Control System:</strong>
+                        Biometric Trust-Based Control System for Projection Devices (Patent Published)
+
+                        <br>
+
+                        • <strong>StudySpotVIT-Self_Learned:</strong>
+                        A Self-Learning IoT-based Edge System and Method for Adaptive Persistent Noise Detection and Seat Recommendation (Patent Published)
+
+                    </div>
+
                 </div>
+
             </div>
 
-            <!-- Certifications Section -->
+
+            <!-- CERTIFICATIONS -->
+
             <div class="certification-container">
-                <div class="section-header"><i class="fas fa-certificate"></i> CERTIFICATIONS</div>
-                <div class="cert-card">
-                    <div class="cert-info">
-                        <h4>AWS Certified Cloud Practitioner</h4>
-                        <p>Amazon Web Services • Cloud Fundamentals & Architectural Concepts</p>
-                    </div>
-                    <a href="Cloud Practitioner Certificate.pdf" target="_blank" class="btn-link">
-                        <i class="fas fa-file-pdf"></i> View
-                    </a>
+
+                <div class="section-header">
+                    <i class="fas fa-certificate"></i>
+                    CERTIFICATIONS
                 </div>
+
+                <div class="cert-card">
+
+                    <div class="cert-info">
+
+                        <h4>
+                            AWS Certified Cloud Practitioner
+                        </h4>
+
+                        <p>
+                            Amazon Web Services • Cloud Fundamentals & Architectural Concepts
+                        </p>
+
+                    </div>
+
+                    <a href="Cloud Practitioner Certificate.pdf"
+                       target="_blank"
+                       class="btn-link">
+
+                        <i class="fas fa-file-pdf"></i>
+                        View
+
+                    </a>
+
+                </div>
+
             </div>
 
         </div>
 
-        <!-- Right Column: Skills Panel -->
+
+        <!-- RIGHT COLUMN -->
+
         <div class="right-column">
+
             <div class="skills-card">
-                <div class="section-header"><i class="fas fa-code"></i> SKILLS</div>
+
+                <div class="section-header">
+                    <i class="fas fa-code"></i>
+                    SKILLS
+                </div>
+
+
+                <!-- LANGUAGES -->
 
                 <div class="skill-group">
-                    <div class="skill-group-title">LANGUAGES</div>
+
+                    <div class="skill-group-title">
+                        LANGUAGES
+                    </div>
+
                     <div class="pills-container">
+
                         <span class="pill">Java</span>
                         <span class="pill">JavaScript</span>
                         <span class="pill">C</span>
                         <span class="pill">C++</span>
                         <span class="pill">Python</span>
+
                     </div>
+
                 </div>
 
+
+                <!-- WEB DEVELOPMENT -->
+
                 <div class="skill-group">
-                    <div class="skill-group-title">WEB DEVELOPMENT</div>
+
+                    <div class="skill-group-title">
+                        WEB DEVELOPMENT
+                    </div>
+
                     <div class="pills-container">
+
                         <span class="pill">HTML</span>
                         <span class="pill">CSS</span>
                         <span class="pill">React</span>
                         <span class="pill">Spring Boot</span>
                         <span class="pill">Flask</span>
+
                     </div>
+
                 </div>
 
+
+                <!-- MOBILE -->
+
                 <div class="skill-group">
-                    <div class="skill-group-title">MOBILE</div>
+
+                    <div class="skill-group-title">
+                        MOBILE
+                    </div>
+
                     <div class="pills-container">
+
                         <span class="pill">Android (Java)</span>
                         <span class="pill">XML</span>
+
                     </div>
+
                 </div>
 
+
+                <!-- DATABASES -->
+
                 <div class="skill-group">
-                    <div class="skill-group-title">DATABASES</div>
+
+                    <div class="skill-group-title">
+                        DATABASES
+                    </div>
+
                     <div class="pills-container">
+
                         <span class="pill">MySQL</span>
                         <span class="pill">Oracle SQL</span>
                         <span class="pill">Firebase RT</span>
+
                     </div>
+
                 </div>
 
+
+                <!-- ML / DL -->
+
                 <div class="skill-group">
-                    <div class="skill-group-title">ML / DL</div>
+
+                    <div class="skill-group-title">
+                        ML / DL
+                    </div>
+
                     <div class="pills-container">
+
                         <span class="pill">Supervised Learning</span>
                         <span class="pill">Unsupervised Learning</span>
                         <span class="pill">CNN</span>
+
                     </div>
+
                 </div>
 
+
+                <!-- EMBEDDED / IOT -->
+
                 <div class="skill-group">
-                    <div class="skill-group-title">EMBEDDED / IOT</div>
+
+                    <div class="skill-group-title">
+                        EMBEDDED / IOT
+                    </div>
+
                     <div class="pills-container">
+
                         <span class="pill">Arduino Uno</span>
                         <span class="pill">ESP8266</span>
                         <span class="pill">ESP32</span>
+
                     </div>
+
                 </div>
 
+
+                <!-- CLOUD -->
+
                 <div class="skill-group">
-                    <div class="skill-group-title">CLOUD PLATFORMS</div>
+
+                    <div class="skill-group-title">
+                        CLOUD PLATFORMS
+                    </div>
+
                     <div class="pills-container">
+
                         <span class="pill">AWS</span>
                         <span class="pill">Microsoft Azure</span>
+
                     </div>
+
                 </div>
 
+
+                <!-- DEVOPS -->
+
                 <div class="skill-group">
-                    <div class="skill-group-title">DEVOPS & VERSION CONTROL</div>
+
+                    <div class="skill-group-title">
+                        DEVOPS & VERSION CONTROL
+                    </div>
+
                     <div class="pills-container">
+
                         <span class="pill">Docker</span>
                         <span class="pill">Git</span>
                         <span class="pill">GitHub</span>
                         <span class="pill">GitHub Actions</span>
                         <span class="pill">Postman</span>
                         <span class="pill">DevOps</span>
+
                     </div>
+
                 </div>
 
+
+                <!-- SOFT SKILLS -->
+
                 <div class="skill-group">
-                    <div class="skill-group-title">SOFT SKILLS</div>
+
+                    <div class="skill-group-title">
+                        SOFT SKILLS
+                    </div>
+
                     <div class="pills-container">
+
                         <span class="pill">Communication</span>
                         <span class="pill">Teamwork</span>
                         <span class="pill">Problem Solving</span>
                         <span class="pill">Adaptability</span>
                         <span class="pill">Leadership</span>
                         <span class="pill">Time Management</span>
+
                     </div>
+
                 </div>
 
             </div>
+
         </div>
 
     </div>
 
-    <!-- Projects Grid Section -->
-    <div class="section-header"><i class="fas fa-folder-open"></i> PROJECTS</div>
-    
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+
+    <div class="section-header">
+        <i class="fas fa-folder-open"></i>
+        PROJECTS
+    </div>
+
+
     <div class="projects-grid">
-        
-        <!-- Project Card 1 -->
-        <a href="https://ieeexplore.ieee.org/document/11452518" target="_blank" class="project-link">
+
+
+        <!-- PROJECT 1 -->
+
+        <a href="https://ieeexplore.ieee.org/document/11452518"
+           target="_blank"
+           class="project-link">
+
             <div class="project-card">
+
                 <div>
+
                     <div class="card-top">
-                        <div class="project-title">StudySpotVIT</div>
-                        <span class="badge-status badge-patent">PAPER</span>
+
+                        <div class="project-title">
+                            StudySpotVIT
+                        </div>
+
+                        <span class="badge-status badge-patent">
+                            PAPER
+                        </span>
+
                     </div>
-                    <div class="tech-subtitle">Android / ESP32 • Published</div>
+
+                    <div class="tech-subtitle">
+                        Android / ESP32 • Published
+                    </div>
+
                     <p class="project-desc">
                         IoT-based smart library seat recommendation framework with real-time noise monitoring, Firebase sync, live availability maps, and automated reservation alerts.
                     </p>
+
                 </div>
+
                 <div class="project-tags">
+
                     <span class="project-tag">Android</span>
                     <span class="project-tag">Java</span>
                     <span class="project-tag">Firebase</span>
                     <span class="project-tag">ESP32</span>
+
                 </div>
+
             </div>
+
         </a>
 
-        <!-- Project Card 2 -->
+
+        <!-- PROJECT 2 -->
+
         <div class="project-card">
+
             <div>
+
                 <div class="card-top">
-                    <div class="project-title">Biometric Control</div>
-                    <span class="badge-status badge-patent">PATENT</span>
+
+                    <div class="project-title">
+                        Biometric Control
+                    </div>
+
+                    <span class="badge-status badge-patent">
+                        PATENT
+                    </span>
+
                 </div>
-                <div class="tech-subtitle">Embedded / Computer Vision</div>
+
+                <div class="tech-subtitle">
+                    Embedded / Computer Vision
+                </div>
+
                 <p class="project-desc">
                     Secure biometric trust-based authentication system for projector devices in shared environments featuring real-time facial recognition and anti-spoofing logic.
                 </p>
+
             </div>
+
             <div class="project-tags">
+
                 <span class="project-tag">Computer Vision</span>
                 <span class="project-tag">Biometrics</span>
                 <span class="project-tag">Embedded C</span>
+
             </div>
+
         </div>
 
-        <!-- Project Card 3 -->
-        <a href="https://github.com/AAQUIL-16/VitSecureDrive" target="_blank" class="project-link">
+
+        <!-- PROJECT 3 -->
+
+        <a href="https://github.com/AAQUIL-16/VitSecureDrive"
+           target="_blank"
+           class="project-link">
+
             <div class="project-card">
+
                 <div>
+
                     <div class="card-top">
-                        <div class="project-title">VitSecureDrive</div>
-                        <span class="badge-status badge-public">PUBLIC</span>
+
+                        <div class="project-title">
+                            VitSecureDrive
+                        </div>
+
+                        <span class="badge-status badge-public">
+                            PUBLIC
+                        </span>
+
                     </div>
-                    <div class="tech-subtitle">Flask / Python • Security</div>
+
+                    <div class="tech-subtitle">
+                        Flask / Python • Security
+                    </div>
+
                     <p class="project-desc">
                         Encrypted cloud storage solution featuring malware detection with ClamAV, hybrid AES-GCM and RSA encryption, integrated with Google Drive API.
                     </p>
+
                 </div>
+
                 <div class="project-tags">
+
                     <span class="project-tag">Flask</span>
                     <span class="project-tag">Python</span>
                     <span class="project-tag">AES/RSA</span>
                     <span class="project-tag">ClamAV</span>
+
                 </div>
+
             </div>
+
         </a>
 
-        <!-- Project Card 4 -->
-        <a href="https://github.com/AAQUIL-16/Deep_Learning_project.git" target="_blank" class="project-link">
+
+        <!-- PROJECT 4 -->
+
+        <a href="https://github.com/AAQUIL-16/Deep_Learning_project.git"
+           target="_blank"
+           class="project-link">
+
             <div class="project-card">
+
                 <div>
+
                     <div class="card-top">
-                        <div class="project-title">Liver Cancer ML</div>
-                        <span class="badge-status badge-public">PUBLIC</span>
+
+                        <div class="project-title">
+                            Liver Cancer ML
+                        </div>
+
+                        <span class="badge-status badge-public">
+                            PUBLIC
+                        </span>
+
                     </div>
-                    <div class="tech-subtitle">TensorFlow / Flask • Deep Learning</div>
+
+                    <div class="tech-subtitle">
+                        TensorFlow / Flask • Deep Learning
+                    </div>
+
                     <p class="project-desc">
                         Multiclass liver disease detection model using DenseNet121 and Grad-CAM explainable AI visualizations for real-time MRI medical classification.
                     </p>
+
                 </div>
+
                 <div class="project-tags">
+
                     <span class="project-tag">DenseNet121</span>
                     <span class="project-tag">TensorFlow</span>
                     <span class="project-tag">Grad-CAM</span>
                     <span class="project-tag">Flask</span>
+
                 </div>
+
             </div>
+
         </a>
 
-        <div class="projects-grid">
-        
-        <!-- Project Card 5 -->
-        <a href="https://github.com/AAQUIL-16/Library-Seat-Recommendation-System" target="_blank" class="project-link">
+
+        <!-- PROJECT 5 -->
+
+        <a href="https://github.com/AAQUIL-16/Library-Seat-Recommendation-System"
+           target="_blank"
+           class="project-link">
+
             <div class="project-card">
+
                 <div>
+
                     <div class="card-top">
-                        <div class="project-title">StudySpotVIT-Self_Learned</div>
-                        <span class="badge-status badge-patent">PATENT</span>
+
+                        <div class="project-title">
+                            StudySpotVIT-Self_Learned
+                        </div>
+
+                        <span class="badge-status badge-patent">
+                            PATENT
+                        </span>
+
                     </div>
-                    <div class="tech-subtitle">Android / ESP32 • Published</div>
+
+                    <div class="tech-subtitle">
+                        Android / ESP32 • Published
+                    </div>
+
                     <p class="project-desc">
                         A self-learning IoT-based smart library seat recommendation system that monitors seat occupancy and persistent noise in real time, learns user preferences using edge reinforcement learning, synchronizes data through Firebase, and provides intelligent seat recommendation and automated reservation management via a mobile application.
                     </p>
+
                 </div>
+
                 <div class="project-tags">
+
                     <span class="project-tag">Android</span>
                     <span class="project-tag">Java</span>
                     <span class="project-tag">Firebase</span>
                     <span class="project-tag">ESP32</span>
+
                 </div>
+
             </div>
+
         </a>
 
-        <!-- Project Card 6: VIT Lost & Found Hub --> <a href="https://github.com/AAQUIL-16/VIT-Lost-Found-HUB-Project" target="_blank" class="project-link">
-        <div class="project-card"> 
-            <div> 
-                <div class="card-top"> <div class="project-title">VIT Lost & Found Hub</div> 
-                    <span class="badge-status badge-public">PUBLIC</span> </div>
-                <div class="tech-subtitle">Android • Campus Application</div> <p class="project-desc"> Android application developed for the VIT campus to provide a centralized platform for students to report, search, and recover lost and found belongings. </p> </div> <div class="project-tags"> <span class="project-tag">Android</span> <span class="project-tag">Java</span> 
-                    <span class="project-tag">Campus App</span> </div> </div> </a>
-        
+
+        <!-- PROJECT 6: VIT LOST & FOUND HUB -->
+
+        <a href="https://github.com/AAQUIL-16/VIT-Lost-Found-HUB-Project"
+           target="_blank"
+           class="project-link">
+
+            <div class="project-card">
+
+                <div>
+
+                    <div class="card-top">
+
+                        <div class="project-title">
+                            VIT Lost & Found Hub
+                        </div>
+
+                        <span class="badge-status badge-public">
+                            PUBLIC
+                        </span>
+
+                    </div>
+
+                    <div class="tech-subtitle">
+                        Android • Campus Application
+                    </div>
+
+                    <p class="project-desc">
+                        Android application developed for the VIT campus to provide a centralized platform for students to report, search, and recover lost and found belongings.
+                    </p>
+
+                </div>
+
+                <div class="project-tags">
+
+                    <span class="project-tag">Android</span>
+                    <span class="project-tag">Java</span>
+                    <span class="project-tag">Campus App</span>
+
+                </div>
+
+            </div>
+
+        </a>
+
+
     </div>
 
 </div>
 
 </body>
 </html>
+```
